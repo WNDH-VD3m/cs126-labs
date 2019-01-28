@@ -4,6 +4,7 @@
 public class MyLinkedList<E> implements IList<E> {
     
     MyLinkedListElement<E> head;
+    private int count;
     
     public MyLinkedList() {
         this.head = null;
@@ -12,7 +13,7 @@ public class MyLinkedList<E> implements IList<E> {
     // INCOMPLETE.
     public boolean isEmpty() {
         // Returns whether the list is empty.
-        return this.head == null;
+        return size() == 0;
     }
     
     // INCOMPLETE.
@@ -26,40 +27,84 @@ public class MyLinkedList<E> implements IList<E> {
         }
         // update the head
         head = temp;
-        
+        count++;
         return true;
     }
     
     // INCOMPLETE.
     public int size() {
         // Returns the number of elements in stored in this list.
-        if (isEmpty()) return 0;
-
+        return count;
+        /*
         MyLinkedListElement<E> ptr = head;
-        int i = -1;
+        int i = 0;
         while (ptr != null) {
             ptr = ptr.getNext();
             i++;
         }
         return i;
+        */
     }
     
     // INCOMPLETE.
     public String toString() {
         // Returns a string representation of this list.
-        return "";
+        String str = "";
+        for (int i = size() - 1; i >= 0; i--) {
+            E v = this.get(i);
+            str += v + " ";
+        }
+        return str;
     }
     
     // INCOMPLETE.
     public boolean addToTail(E element) {
         // Adds element to tail of the list
-        return false;
+        MyLinkedListElement<E> temp = new MyLinkedListElement<>(element);
+        
+        // if is empty, update head
+        if (isEmpty()) {
+            head = temp;
+        }
+
+        // point new elem to null
+        temp.setNext(null);
+
+        MyLinkedListElement<E> ptr = head;
+        while (ptr.getNext() != null) {
+            ptr = ptr.getNext();
+        }
+        // ptr = tail element when iteration is finished
+        // point tail element to new element
+        ptr.setNext(temp);
+
+        count++;
+        return true;
     }
     
     // INCOMPLETE.
     public E removeFromHead() {
         // Removes and returns the head element
-        return null;
+        MyLinkedListElement<E> temp = head;
+        head = head.getNext();
+        count--;
+        return temp.getValue();
+    }
+
+    public E removeFromTail() {
+        // Removes and returns the tail element
+        MyLinkedListElement<E> ptr = head;
+        while (ptr.getNext().getNext() != null) {
+            ptr = ptr.getNext();
+        }
+        // ptr = second to last element
+        // store tail element to be returned later
+        MyLinkedListElement<E> last = ptr.getNext();
+        // point second to last element to null
+        ptr.setNext(null);
+
+        count--;
+        return last.getValue();
     }
     
     public E get(int index) {
@@ -125,6 +170,4 @@ public class MyLinkedList<E> implements IList<E> {
         }
         return false;
     }
-
-    
 }
