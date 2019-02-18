@@ -10,28 +10,30 @@ public class BinaryTreeNode<E extends Comparable<E>> {
         right = null;
     }
 
-    public E getValue() { 
-        return value; 
+    public E getValue() {
+        return value;
     }
 
-    public BinaryTreeNode<E> getLeft() { 
-        return left; 
+    public BinaryTreeNode<E> getLeft() {
+        return left;
     }
 
     public BinaryTreeNode<E> getRight() {
-        return right; 
-    }
-    
-    public void setValue(E v) { 
-        value = v; 
+        return right;
     }
 
-    public void setLeft(BinaryTreeNode<E> p) {
-        left = p; 
+    public void setValue(E v) {
+        value = v;
     }
 
-    public void setRight(BinaryTreeNode<E> p) {
-        right = p; 
+    public BinaryTreeNode<E> setLeft(BinaryTreeNode<E> p) {
+        left = p;
+        return p;
+    }
+
+    public BinaryTreeNode<E> setRight(BinaryTreeNode<E> p) {
+        right = p;
+        return p;
     }
 
 }

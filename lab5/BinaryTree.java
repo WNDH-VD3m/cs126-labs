@@ -5,7 +5,7 @@ public class BinaryTree<E extends Comparable<E>> {
         root = null;
     }
 
-    private void addToSubTree(BinaryTreeNode<E> n, E v) {    
+    private void addToSubTree(BinaryTreeNode<E> n, E v) {
         if (n!=null) // sanity check!
         {
             E nValue = n.getValue();
@@ -67,7 +67,7 @@ public class BinaryTree<E extends Comparable<E>> {
     {
         System.out.print("Inorder traversal: ");
 
-        inOrder(root);
+        preOrder(root);
 
         System.out.println();
     }
