@@ -96,7 +96,7 @@ public class ArrayList<E> implements IList<E> {
         return replaced;
     }
     
-    
+   
     public String toString() {
         if (this.isEmpty()) {
             return "[]";
